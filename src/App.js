@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // class User extends Component {
 //   constructor(props) {
@@ -44,12 +44,37 @@ import React from "react";
 // }
 
 const User = ({ firstName, lastName, link }) => {
+  const [counter, setCount] = useState(0)
+  const [age, setAge] = useState(0)
+
+const onPlus = () => {
+  setCount(counter + 1)
+}
+const onMinus = () => {
+  setCount(counter - 1)
+}
+const Zero = () => {
+  setCount(0)
+}
+
   return (
     <div className="w-50 mx-auto">
       <div className="border p-3 mt-5">
-      <h1>Mening ismim - {firstName}, sharifim - {lastName}</h1>
-      <a href={link}>Youtube</a>
-      </div> 
+        <h1>Mening ismim - {firstName}, sharifim - {lastName}, yosh - {age}</h1>
+        <a href={link}>Youtube</a>
+        <p className="text-center">{counter}</p>
+        <div className="d-flex justify-content-center">
+          <button className="btn btn-success" onClick={onPlus}>
+            +
+          </button>
+          <button className="btn btn-danger mx-2" onClick={onMinus}>
+            -
+          </button>
+          <button className="btn btn-info" onClick={Zero}>
+            0
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
