@@ -45,14 +45,13 @@ import React, { useState } from "react";
 
 const User = ({ firstName, lastName, link }) => {
   const [counter, setCount] = useState(0)
-  const [age, setAge] = useState(21)
 
   const onIncrement = () => {
-    setCount(counter + 1)    
+    setCount(prevCount => prevCount + 1)    
   }
 
   const onDicrement = () => {
-    setCount(counter - 1)
+    setCount(prevCount => prevCount - 1)    
   }
 
   const onRestart = () => {
@@ -62,7 +61,7 @@ const User = ({ firstName, lastName, link }) => {
   return (
     <div className="w-50 mx-auto">
       <div className="border p-3 mt-5">
-        <h1>Mening ismim - {firstName}, sharifim - {lastName}, yoshim - {age}</h1>
+        <h1>Mening ismim - {firstName}, sharifim - {lastName}</h1>
         <a href={link}>Youtube</a>
         <p className="text-center">{counter}</p>
         <div className="d-flex justify-content-center">
