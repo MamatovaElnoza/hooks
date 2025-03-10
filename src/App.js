@@ -45,6 +45,11 @@ import React, { useState } from "react";
 
 const User = ({ firstName, lastName, link }) => {
   const [counter, setCount] = useState(0)
+  const [login, setLogin] = useState(true)
+
+  const onLogin = () => {
+    setLogin(prevState => !prevState)
+  }
 
   const onIncrement = () => {
     setCount(prevCount => prevCount + 1)    
@@ -69,6 +74,8 @@ const User = ({ firstName, lastName, link }) => {
           <button className="btn btn-danger mx-2" onClick={onDicrement}>-</button>
           <button className="btn btn-warning" onClick={onRestart}>+</button>
         </div>
+        {login ? <p>Login</p> : null}
+        <button onClick={onLogin} className="btn btn-outline-dark">login</button>
       </div>
     </div>
   )
