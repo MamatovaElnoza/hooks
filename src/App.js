@@ -20,6 +20,10 @@ class User extends Component {
     document.title = `Counter: ${this.state.age}`
     console.log('update');
   }
+  componentWillUnmount(){
+    alert('component will unmount!');
+    console.log('unmount');
+  }
 
   render() {
     const { firstName, lastName, link } = this.props
@@ -92,10 +96,16 @@ class User extends Component {
 
 
 const App = () => {
+  const [isDisplay, setIsDisplay] = useState(true)
+
+  const deleteDisplayHandler = () => {
+    setIsDisplay(false)
+  }
+  
   return (
     <>
-      <User firstName="elnoza" lastName="mamatova" link="youtube.com" />
-      <User firstName="iroda" lastName="po'latova" link="youtube.com" />
+    <button onClick={deleteDisplayHandler}>display</button>
+      {isDisplay && <User firstName="elnoza" lastName="mamatova" link="youtube.com" />}
     </>
   )
 }
