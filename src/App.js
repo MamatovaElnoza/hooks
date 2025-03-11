@@ -13,9 +13,11 @@ class User extends Component {
   changeHandler = e => { this.setState({ age: e.target.value }) };
 
   componentDidMount() {
+    document.title = `Counter: ${this.state.counter}`
     console.log('mounting');
   }
   componentDidUpdate() {
+    document.title = `Counter: ${this.state.age}`
     console.log('update');
   }
 
