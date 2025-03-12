@@ -79,6 +79,9 @@ const User = ({ firstName, lastName, link }) => {
   useEffect(() => {
     console.log('effect');
     document.title = `Counter: ${counter}`
+
+    return() => {console.log('deleted');
+    }
   }, [])
 
   return (
