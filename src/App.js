@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CounterItem from "./counter-item/counter-item";
 
 // class User extends Component {
 //   constructor(props) {
@@ -64,9 +65,8 @@ const User = () => {
   const onToggle = () => setActive(prevState => !prevState)
 
   const counterGenerate = () => {
-    return new Array(counter).fill('').map((_, idx) => `Counter number: ${idx + 1}`)
+    return new Array(counter).fill('').map((_, idx) => `Counter number - ${idx + 1}`)
   }
-  console.log(counterGenerate());
   
 
   const colors = {
@@ -82,6 +82,7 @@ const User = () => {
           <button className="btn btn-success" onClick={onIncrement}>Increase</button>
           <button className="btn btn-warning" onClick={onToggle}>Toggle</button>
         </div>
+      <CounterItem counterGenerate={counterGenerate}/>
       </div>
     </div>
   )
@@ -89,12 +90,7 @@ const User = () => {
 
 
 const App = () => {
-
-  return (
-    <>
-      <User firstName="elnoza" lastName="mamatova" link="youtube.com" />
-    </>
-  )
+  return<User firstName="elnoza" lastName="mamatova" link="youtube.com" />
 }
 
 export default App;
