@@ -63,6 +63,12 @@ const User = () => {
   const onIncrement = () => setCount(prevState => prevState + 1)
   const onToggle = () => setActive(prevState => !prevState)
 
+  const counterGenerate = () => {
+    return new Array(counter).fill('').map((_, idx) => `Counter number: ${idx + 1}`)
+  }
+  console.log(counterGenerate());
+  
+
   const colors = {
     fontWeight: 'bold',
     color: active ? 'green' : 'red'
