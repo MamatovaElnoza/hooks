@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const CounterItem = () => {
+const CounterItem = ({counterGenerate}) => {
+    const [item, setItem] = useState([])
+
+    useEffect(() => {
+        const newItem = counterGenerate()
+        setItem(newItem)
+        console.log('render');
+        
+    }, [counterGenerate])
   return (
-    <div>CounterItem</div>
+    <ul>
+        {item.map(item => (
+            <li key={item}>{item}</li>
+        ))}
+    </ul>
   )
 }
 

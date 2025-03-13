@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import CounterItem from "./counter-item/counter-item";
 
 // class User extends Component {
@@ -64,9 +64,7 @@ const User = () => {
   const onIncrement = () => setCount(prevState => prevState + 1)
   const onToggle = () => setActive(prevState => !prevState)
 
-  const counterGenerate = () => {
-    return new Array(counter).fill('').map((_, idx) => `Counter number - ${idx + 1}`)
-  }
+  const counterGenerate = useCallback(() => new Array(counter).fill('').map((_, idx) => `Counter number - ${idx + 1 }`), [counter])
   
 
   const colors = {
