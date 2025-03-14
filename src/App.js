@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useMemo } from "react";
 
 // class User extends Component {
 //   constructor(props) {
@@ -59,7 +59,7 @@ import React, { useState, useCallback } from "react";
 const bigCountNumber = number => {
   console.log('render');
   let i = 0
-  while (i < 1000000000) i++
+  while (i < 100000000) i++
   return number * 2
 }
 
@@ -75,7 +75,7 @@ const User = () => {
     color: active ? 'green' : 'red'
   }
 
-  const number = bigCountNumber(counter)
+  const number = useMemo(() => bigCountNumber(counter), [counter])
 
   return (
     <div className="w-50 mx-auto">
