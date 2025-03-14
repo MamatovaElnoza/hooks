@@ -76,6 +76,7 @@ const User = () => {
   }
 
   const number = useMemo(() => bigCountNumber(counter), [counter])
+  // const number = bigCountNumber(counter)
 
   return (
     <div className="w-50 mx-auto">
