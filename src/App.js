@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import CounterItem from "./counter-item/counter-item";
 
 // class User extends Component {
 //   constructor(props) {
@@ -57,6 +56,13 @@ import CounterItem from "./counter-item/counter-item";
 //   }
 // }
 
+const bigCountNumber = number => {
+  console.log('render');
+  let i = 0
+  while (i < 1000000000) i++
+  return number * 2
+}
+
 const User = () => {
   const [counter, setCount] = useState(0)
   const [active, setActive] = useState(true)
@@ -64,23 +70,21 @@ const User = () => {
   const onIncrement = () => setCount(prevState => prevState + 1)
   const onToggle = () => setActive(prevState => !prevState)
 
-  const counterGenerate = useCallback(() => new Array(counter).fill('').map((_, idx) => `Counter number - ${idx + 1 }`), [counter])
-  
-
   const colors = {
     fontWeight: 'bold',
     color: active ? 'green' : 'red'
   }
 
+  const number = bigCountNumber(counter)
+
   return (
     <div className="w-50 mx-auto">
       <div className="border p-3 mt-5">
-        <p className="text-center" style={colors}>User activated: {counter}</p>
+        <p className="text-center" style={colors}>User activated: {number}</p>
         <div className="d-flex justify-content-center">
           <button className="btn btn-success" onClick={onIncrement}>Increase</button>
           <button className="btn btn-warning" onClick={onToggle}>Toggle</button>
         </div>
-      <CounterItem counterGenerate={counterGenerate}/>
       </div>
     </div>
   )
@@ -88,7 +92,7 @@ const User = () => {
 
 
 const App = () => {
-  return<User firstName="elnoza" lastName="mamatova" link="youtube.com" />
+  return <User firstName="elnoza" lastName="mamatova" link="youtube.com" />
 }
 
 export default App;
