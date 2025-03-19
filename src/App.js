@@ -8,8 +8,9 @@ const User = () => {
   const HandleInput = e =>{
     const val = e.target.value
     setCardNumber(val)
-    console.log(val.length);
-    
+    if(val.length === 16){
+      cvcRef.current.focus()
+    }
   }
   
   return (
