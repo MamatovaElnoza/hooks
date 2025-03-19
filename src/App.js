@@ -1,17 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 const User = () => {
+  const [cardNumber, setCardNumber] = useState('')
+
   const cvcRef = useRef(null)
 
-  useEffect(() => {
-    console.log(cvcRef.current);
+  const HandleInput = e =>{
+    const val = e.target.value
+    setCardNumber(val)
+    console.log(val.length);
     
-  })
+  }
   
   return (
     <div className="w-50 mx-auto">
       <div className="border p-3 mt-5">
-        <input type="text" className="form-control" placeholder="Card number"/>
+        <input type="text" className="form-control" placeholder="Card number" onChange={HandleInput} value={cardNumber}/>
         <input ref={cvcRef} type="text" className="form-control mt-2" placeholder="Secure number"/>
       </div>
     </div>
